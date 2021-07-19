@@ -19,7 +19,7 @@ public class UserEntity {
     @Column(nullable = false,length = 50,unique = true)
     private String UserId;
 
-    @Column(nullable = false,length = 50,unique = true)
+    @Column(nullable = false,length = 200,unique = true)
     private String encryptedPwd;
 
 }
