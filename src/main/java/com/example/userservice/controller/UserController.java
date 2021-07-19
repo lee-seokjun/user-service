@@ -29,13 +29,16 @@ public class UserController {
         this.env= env;
         this.userService=userService;
     }
-    @GetMapping("/health_check")
+    @GetMapping("/user-service/health_check")
     public String status(){
-        return "It's Working in User Service";
-    }    @GetMapping("/welcome")
+        return String.format("It's Working in UIser Service on Port %s",
+                env.getProperty("local.server.port"));
+    }
+    @GetMapping("/welcome")
     public String welcome(){
 //        return env.getProperty("greeting.message");
         return greeting.getMessage();
+
     }
     @PostMapping("/users")
     public ResponseEntity createUser(@RequestBody RequestUser user){
@@ -47,4 +50,5 @@ public class UserController {
         ResponseUser responseUser= mapper.map(userDto,ResponseUser.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
     }
+
 }
