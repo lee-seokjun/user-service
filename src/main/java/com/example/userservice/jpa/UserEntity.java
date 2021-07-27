@@ -17,7 +17,7 @@ public class UserEntity {
     @Column(nullable = false,length = 50)
     private String name;
     @Column(nullable = false,length = 50,unique = true)
-    private String UserId;
+    private String userId;
 
     @Column(nullable = false,length = 200,unique = true)
     private String encryptedPwd;
