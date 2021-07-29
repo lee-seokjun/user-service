@@ -52,7 +52,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
          UserDto userDto= userService.getUserDetailsByEmail(username);
         String token = Jwts.builder()
                 .setSubject(userDto.getUserId())
-                .setExpiration(new Date(System.currentTimeMillis()+Long.parseLong(env.getProperty("token.expirtation_time"))))
+                .setExpiration(new Date(System.currentTimeMillis()+Long.parseLong(env.getProperty("token.expiration_time"))))
                 .signWith(SignatureAlgorithm.HS512,env.getProperty("token.secret"))
                 .compact();
         response.addHeader("token",token);
