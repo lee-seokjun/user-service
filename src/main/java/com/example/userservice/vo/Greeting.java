@@ -1,6 +1,5 @@
 package com.example.userservice.vo;
 
-import jdk.nashorn.internal.objects.annotations.Constructor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +11,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Greeting {
-    @Value("${greeting.message}")
+    @Value("${greeting.message:Greeting not found!}")
     private String message;
 }
