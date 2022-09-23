@@ -1,6 +1,7 @@
 spring:
   cloud:
     config:
+      #config 값을 가져올 주소
       uri: http://127.0.0.1:8888
       name: user-service
 #  profiles:

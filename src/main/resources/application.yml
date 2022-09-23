@@ -4,6 +4,15 @@ server:
 spring:
   application:
     name: user-service
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    enabled: true
+  sleuth:
+    probability: 1.0
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
   rabbitmq:
     host: 127.0.0.1
     port: 5672
@@ -24,6 +33,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
+      # eureka server 주소
       defaultZone: http://127.0.0.1:8761/eureka
   instance:
     lease-renewal-interval-in-seconds: 1 #하트비트 인터벌
@@ -35,13 +45,14 @@ greeting:
 
 logging:
   level:
-    com.example.userservice: DEBUG
+    com.example.userservice.client: DEBUG
 
+# actuator 추가
 management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans, busrefresh
+        include: refresh, health, beans, busrefresh, info, metrics, prometheus
 
 #token 유효시간
 #token:
